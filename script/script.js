@@ -9,76 +9,90 @@ const seatsBooked = document.getElementById("seats-booked");
 let numberOfSeatsBooked = parseInt(seatsBooked.innerText);
 
 let seatsSelected = [];
-
+let count = 0;
 for (const seat of seats) {
   seat.addEventListener("click", function (e) {
+    if (count < 4) {
+      count++;
+      seat.style.backgroundColor = "#1DD100";
+      seat.style.color = "white";
+      e.target.disabled = true;
 
+      seatLeft = seatLeft - 1;
+      remainingSeats.innerText = seatLeft;
 
-    seat.style.backgroundColor = "#1DD100";
-    seat.style.color = "white";
-    e.target.disabled = true;
+      // number of seats booked
+      numberOfSeatsBooked = numberOfSeatsBooked + 1;
 
-    seatLeft = seatLeft - 1;
-    remainingSeats.innerText = seatLeft;
+      seatsBooked.innerText = numberOfSeatsBooked;
 
-    // number of seats booked
-    numberOfSeatsBooked = numberOfSeatsBooked + 1;
+      // selecting the seats
 
-    seatsBooked.innerText = numberOfSeatsBooked;
+      const seatNumber = e.target.innerText;
 
-    // selecting the seats
+      const h4 = document.createElement("h4");
+      h4.innerText = seatNumber;
 
-    const seatNumber = e.target.innerText;
+      const h41 = document.createElement("h4");
+      h41.innerText = "Economy";
 
-    const h4 = document.createElement("h4");
-    h4.innerText = seatNumber;
+      const h42 = document.createElement("h4");
+      h42.innerText = "550";
 
-    const h41 = document.createElement("h4");
-    h41.innerText = "Economy";
+      const bookedSeats = document.getElementById("selected-seats");
+      bookedSeats.appendChild(h4);
+      bookedSeats.appendChild(h41);
+      bookedSeats.appendChild(h42);
 
-    const h42 = document.createElement("h4");
-    h42.innerText = "550";
+      // total Price
+      totalPrice = totalPrice + 550;
 
-    const bookedSeats = document.getElementById("selected-seats");
-    bookedSeats.appendChild(h4);
-    bookedSeats.appendChild(h41);
-    bookedSeats.appendChild(h42);
+      const totalTicketPrice = document.getElementById("total-price");
+      totalTicketPrice.innerText = totalPrice;
+      const grandTotal = document.getElementById("grand-total");
+      grandTotal.innerText = totalPrice;
 
-    // total Price
-    totalPrice = totalPrice + 550;
+      seatsSelected.push(h4.innerText);
 
-    const totalTicketPrice = document.getElementById("total-price");
-    totalTicketPrice.innerText = totalPrice;
-    const grandTotal = document.getElementById("grand-total");
-    grandTotal.innerText = totalPrice;
+      const applyCouponButton = document.getElementById("apply-coupon");
 
-    seatsSelected.push(h4.innerText);
-
-    const applyCouponButton = document.getElementById("apply-coupon");
-
-    if (seatsSelected.length === 4) {
-      applyCouponButton.classList.remove("btn-disabled");
-      
-    }
-
-    // enable 'next' button
-
-    document.getElementById("phone").addEventListener("keyup", function (e) {
-      const num = parseInt(e.target.value);
-      const buttonNext = document.getElementById("button-next");
-      console.log(num, totalPrice);
-
-      if (typeof num === "number" && totalPrice > 0) {
-        buttonNext.classList.remove("btn-disabled");
+      if (seatsSelected.length === 4) {
+        applyCouponButton.classList.remove("btn-disabled");
       }
 
-      // refresh form
-      const refreshBtn = document
-        .getElementById("my_modal_5")
-        .addEventListener("click", function () {
-          window.location.reload();
-        });
-    });
+      // enable 'next' button
+
+      document.getElementById("phone").addEventListener("keyup", function (e) {
+        const num = parseInt(e.target.value);
+        const buttonNext = document.getElementById("button-next");
+        console.log(num, totalPrice);
+
+        if (typeof num === "number" && totalPrice > 0) {
+          buttonNext.classList.remove("btn-disabled");
+        }
+
+        // refresh form
+        const refreshBtn = document
+          .getElementById("my_modal_5")
+          .addEventListener("click", function () {
+            window.location.reload();
+          });
+      });
+    } else {
+      alert("You cannot buy more than 4 seats");
+
+      function restrictBookingMoreThanFourSeats(e) {
+        const extraSeats = document.querySelectorAll(
+          "e.target:not(btn-disabled)"
+        );
+        for (const seat of seats) {
+          e.target.classList.add("btn-disabled");
+          e.target.disabled = true;
+        }
+      }
+    }
+
+    
   });
 
   // setting grand total with or without coupon
