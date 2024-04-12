@@ -12,6 +12,8 @@ let seatsSelected = [];
 
 for (const seat of seats) {
   seat.addEventListener("click", function (e) {
+
+
     seat.style.backgroundColor = "#1DD100";
     seat.style.color = "white";
     e.target.disabled = true;
@@ -56,7 +58,7 @@ for (const seat of seats) {
 
     if (seatsSelected.length === 4) {
       applyCouponButton.classList.remove("btn-disabled");
-      alert("You can buy 4 tickets only");
+      
     }
 
     // enable 'next' button
