@@ -77,6 +77,8 @@ for (const seat of seats) {
           .addEventListener("click", function () {
             window.location.reload();
           });
+
+       
       });
     } else {
       alert("You cannot buy more than 4 seats");

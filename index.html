@@ -279,7 +279,7 @@
 
         <!-- seats and calculation -->
         <div
-          class="flex flex-col lg:flex-row justify-between gap-4 bg-white mx-2 lg:mx-12 mt-12 rounded-lg"
+          class="flex flex-col lg:flex-row justify-between bg-white lg:mx-12 mt-12 rounded-lg"
         >
           <!-- seats -->
 
@@ -484,7 +484,7 @@
 
             <!-- selected seats  -->
 
-            <div class="bg-[#e5e6e7] py-4 font-inter">
+            <div class="bg-[#e5e6e7] mx-2 py-4 font-inter rounded-lg">
               <div class="grid grid-cols-3 gap-x-8 px-4 mb-4">
                 <h4 class="font-bold">
                   Seat
@@ -528,10 +528,10 @@
 
                 <div
                   id="input-coupon"
-                  class="my-4 px-4 flex flex-col lg:flex-row lg:justify-between"
+                  class="my-4 lg:mr-12 flex flex-col lg:flex-row lg:justify-between items-center"
                 >
                   <input
-                    class="pl-4 pr-12 py-2 bg-gray-200 rounded-lg"
+                    class="pl-4 pr-8 py-3 bg-gray-300 ml-4 rounded-lg"
                     type="text"
                     placeholder="Have any coupon?"
                     name=""
@@ -540,7 +540,7 @@
                   <button
                     id="apply-coupon"
                     onclick="applyCoupon()"
-                    class="btn bg-[#1DD100] text-white btn-disabled"
+                    class="btn bg-[#1DD100] text-white btn-disabled mx-4 lg:mx-0"
                   >
                     Apply
                   </button>
@@ -640,7 +640,10 @@
             <div class="modal-action flex justify-center">
               <form method="dialog">
                 <!-- if there is a button in form, it will close the modal -->
-                <button class="btn px-20 rounded-full bg-[#27AE60] text-white">
+                <button
+                  
+                  class="btn px-20 rounded-full bg-[#27AE60] text-white"
+                >
                   Continue
                 </button>
               </form>
