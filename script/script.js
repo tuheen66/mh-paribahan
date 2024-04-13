@@ -8,7 +8,6 @@ let seatLeft = parseInt(remainingSeats.innerText);
 const seatsBooked = document.getElementById("seats-booked");
 let numberOfSeatsBooked = parseInt(seatsBooked.innerText);
 
-let seatsSelected = [];
 let count = 0;
 for (const seat of seats) {
   seat.addEventListener("click", function (e) {
@@ -52,12 +51,12 @@ for (const seat of seats) {
       const grandTotal = document.getElementById("grand-total");
       grandTotal.innerText = totalPrice;
 
-      seatsSelected.push(h4.innerText);
-
       const applyCouponButton = document.getElementById("apply-coupon");
       const applyCouponInput = document.getElementById("coupon-input");
 
-      if (seatsSelected.length === 4) {
+      // enable apply coupon
+
+      if (count === 4) {
         applyCouponButton.classList.remove("btn-disabled");
         applyCouponInput.classList.remove("btn-disabled");
       }
@@ -75,9 +74,9 @@ for (const seat of seats) {
 
         // refresh form
         const refreshBtn = document
-          .getElementById("my_modal_5")
+          .getElementById("continue")
           .addEventListener("click", function () {
-            window.location.reload();
+            location.reload();
           });
       });
     } else {
