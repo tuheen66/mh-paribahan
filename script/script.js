@@ -71,13 +71,6 @@ for (const seat of seats) {
         if (typeof num === "number" && totalPrice > 0) {
           buttonNext.classList.remove("btn-disabled");
         }
-
-        // refresh form
-        const refreshBtn = document
-          .getElementById("continue")
-          .addEventListener("click", function () {
-            location.reload();
-          });
       });
     } else {
       alert("You cannot buy more than 4 seats");
