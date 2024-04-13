@@ -55,9 +55,11 @@ for (const seat of seats) {
       seatsSelected.push(h4.innerText);
 
       const applyCouponButton = document.getElementById("apply-coupon");
+      const applyCouponInput = document.getElementById("coupon-input");
 
       if (seatsSelected.length === 4) {
         applyCouponButton.classList.remove("btn-disabled");
+        applyCouponInput.classList.remove("btn-disabled");
       }
 
       // enable 'next' button
@@ -77,8 +79,6 @@ for (const seat of seats) {
           .addEventListener("click", function () {
             window.location.reload();
           });
-
-       
       });
     } else {
       alert("You cannot buy more than 4 seats");
@@ -93,8 +93,6 @@ for (const seat of seats) {
         }
       }
     }
-
-    
   });
 
   // setting grand total with or without coupon
